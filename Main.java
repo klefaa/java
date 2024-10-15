@@ -7,16 +7,22 @@ public class Main {
 
         while (true) { // выбор задачи
             System.out.println("\nВыберите задачу (1 - 20):");
-            System.out.println("1 Дробная часть");
-            System.out.println("2 Букву в число");
-            System.out.println("3 Двузначное");
-            System.out.println("4 Диапазон");
-            System.out.println("5 Равенство");
-            System.out.println("6 Модуль числа");
-            System.out.println("7 Тридцать пять");
-            System.out.println("8 Тройной максимум");
-            System.out.println("9 Двойная сумма");
-            System.out.println("10 День недели");
+            System.out.println("1: Дробная часть");
+            System.out.println("2: Букву в число");
+            System.out.println("3: Двузначное");
+            System.out.println("4: Диапазон");
+            System.out.println("5: Равенство");
+            System.out.println("6: Модуль числа");
+            System.out.println("7: Тридцать пять");
+            System.out.println("8: Тройной максимум");
+            System.out.println("9: Двойная сумма");
+            System.out.println("10: День недели");
+            System.out.println("11: Числа подряд");
+            System.out.println("12: Четные числа");
+            System.out.println("13: Длина числа");
+            System.out.println("14: Квадрат");
+            System.out.println("15: Правый треугольник");
+            System.out.println("0: Выход");
             System.out.print("Ваш выбор: ");
 
             int choice = scanner.nextInt();
@@ -113,32 +119,33 @@ public class Main {
                     int dayNumber = scanner.nextInt();
                     System.out.println("День недели: " + day(dayNumber));
                     break;
+                // числа подряд
                 case 11:
-                    System.out.print("Введите число (список чисел): ");
+                    System.out.print("Введите число: ");
                     int x = scanner.nextInt();
                     System.out.println("Числа подряд: " + listNums(x));
                     break;
-                // Задача 2: Четные числа
+                // четные числа
                 case 12:
-                    System.out.print("Введите число (четные числа): ");
+                    System.out.print("Введите число : ");
                     int y1 = scanner.nextInt();
-                    System.out.println("Четные числа: " + chet(y1));
+                    System.out.println("Четные числа в строке: " + chet(y1));
                     break;
                 case 13:
-                    // Задача 3: Длина числа
-                    System.out.print("Введите длинное число: ");
+                    // длина числа
+                    System.out.print("Введите число: ");
                     long num = scanner.nextLong();
                     System.out.println("Длина числа: " + numLen(num));
                     break;
                 case 14:
-                    // Задача 4: Квадрат
-                    System.out.print("Введите число (размер квадрата): ");
+                    // квадрат
+                    System.out.print("Введите число (размеры квадрата): ");
                     int squareSize = scanner.nextInt();
                     square(squareSize);
                     break;
                 case 15:
-                    // Задача 5: Правый треугольник
-                    System.out.print("Введите число (высота треугольника): ");
+                    // правый треугольник
+                    System.out.print("Введите число (высоту треугольника): ");
                     int triangleHeight = scanner.nextInt();
                     rightTriangle(triangleHeight);
                     break;
@@ -225,7 +232,7 @@ public class Main {
         }
     }
 
-    // Метод для вывода строки с числами от 0 до x
+    // метод для вывода строки с числами от 0 до x
     public static String listNums(int x) {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i <= x; i++) {
@@ -234,16 +241,16 @@ public class Main {
         return result.toString().trim();
     }
 
-    // Метод для вывода строки с четными числами от 0 до x
+    // метод для вывода строки с четными числами от 0 до x
     public static String chet(int x) {
         StringBuilder result = new StringBuilder();
-        for (int i = 0; i <= x; i += 2) { // Увеличиваем i на 2, чтобы взять только четные
+        for (int i = 0; i <= x; i += 2) {
             result.append(i).append(" ");
         }
         return result.toString().trim();
     }
 
-    // Метод для нахождения длины числа
+    // метод для нахождения длины числа
     public static int numLen(long x) {
         int length = 0;
         do {
@@ -253,26 +260,26 @@ public class Main {
         return length;
     }
 
-    // Метод для вывода квадрата размером x на x
+    // метод для вывода квадрата размером x на x
     public static void square(int x) {
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < x; j++) {
                 System.out.print("*");
             }
-            System.out.println(); // Переход на новую строку
+            System.out.println();
         }
     }
 
-    // Метод для вывода правого треугольника высотой x
+    // метод для вывода правого треугольника высотой x
     public static void rightTriangle(int x) {
         for (int i = 1; i <= x; i++) {
             for (int j = 0; j < x - i; j++) {
-                System.out.print(" "); // Печатаем пробелы для выравнивания справа
+                System.out.print(" ");
             }
             for (int k = 0; k < i; k++) {
                 System.out.print("*");
             }
-            System.out.println(); // Переход на новую строку
+            System.out.println();
         }
     }
 }
