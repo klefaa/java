@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -6,6 +7,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         while (true) { // выбор задачи
+            System.out.println("\nВыберите задачу (1 - 20):");
             System.out.println("\nВыберите задачу (1 - 20):");
             System.out.println("1: Дробная часть");
             System.out.println("2: Букву в число");
@@ -22,6 +24,11 @@ public class Main {
             System.out.println("13: Длина числа");
             System.out.println("14: Квадрат");
             System.out.println("15: Правый треугольник");
+            System.out.println("16: Поиск первого значения");
+            System.out.println("17: Поиск максимального по модулю");
+            System.out.println("18: Добавление массива в массив");
+            System.out.println("19: Возвратный реверс");
+            System.out.println("20: Все вхождения");
             System.out.println("0: Выход");
             System.out.print("Ваш выбор: ");
 
@@ -149,6 +156,81 @@ public class Main {
                     int triangleHeight = scanner.nextInt();
                     rightTriangle(triangleHeight);
                     break;
+                case 16: {
+                    System.out.println("Введите длину массива:");
+                    int n = scanner.nextInt();
+                    int[] arr = new int[n];
+                    System.out.println("Введите элементы массива:");
+                    for (int i = 0; i < n; i++) {
+                        arr[i] = scanner.nextInt();
+                    }
+                    // Задача 1: Поиск первого значения
+
+                    System.out.print("Введите число для поиска первого вхождения: ");
+                    int x3 = scanner.nextInt();
+                    System.out.println("Индекс первого вхождения: " + findFirst(arr, x3));
+                    break;
+                }
+                case 17: {
+                    System.out.println("Введите длину массива:");
+                    int n = scanner.nextInt();
+                    int[] arr = new int[n];
+                    System.out.println("Введите элементы массива:");
+                    for (int i = 0; i < n; i++) {
+                        arr[i] = scanner.nextInt();
+                    }
+                    // Задача 2: Поиск максимального по модулю
+                    System.out.println("Максимальное по модулю значение: " + maxAbs(arr));
+                    break;
+                }
+                case 18: {
+                    System.out.println("Введите длину массива:");
+                    int n = scanner.nextInt();
+                    int[] arr = new int[n];
+                    System.out.println("Введите элементы массива:");
+                    for (int i = 0; i < n; i++) {
+                        arr[i] = scanner.nextInt();
+                    }
+                    // Задача 3: Добавление массива в массив
+                    System.out.println("Введите длину вставляемого массива:");
+                    int m = scanner.nextInt();
+                    int[] ins = new int[m];
+                    System.out.println("Введите элементы вставляемого массива:");
+                    for (int i = 0; i < m; i++) {
+                        ins[i] = scanner.nextInt();
+                    }
+                    System.out.print("Введите позицию для вставки: ");
+                    int pos = scanner.nextInt();
+                    System.out.println("Новый массив: " + Arrays.toString(add(arr, ins, pos)));
+                    break;
+                }
+                case 19: {
+                    System.out.println("Введите длину массива:");
+                    int n = scanner.nextInt();
+                    int[] arr = new int[n];
+                    System.out.println("Введите элементы массива:");
+                    for (int i = 0; i < n; i++) {
+                        arr[i] = scanner.nextInt();
+                    }
+                    // Задача 4: Возвратный реверс
+
+                    System.out.println("Реверсированный массив: " + Arrays.toString(reverseBack(arr)));
+
+                    break;
+                }
+                case 20: {
+                    System.out.println("Введите длину массива:");
+                    int n = scanner.nextInt();
+                    int[] arr = new int[n];
+                    System.out.println("Введите элементы массива:");
+                    for (int i = 0; i < n; i++) {
+                        arr[i] = scanner.nextInt();
+                    }
+                    // Задача 5: Все вхождения
+                    System.out.print("Введите число для поиска всех вхождений: ");
+                    int y3 = scanner.nextInt();
+                    System.out.println("Все вхождения числа: " + Arrays.toString(findAll(arr, y3)));
+                }
                 default:
                     System.out.println("Ошибка: введите верный номер задачи");
             }
@@ -159,10 +241,10 @@ public class Main {
 
     // метод для возврата дробной части
     public static void fraction(double x) {
-        if (x == (int)x) {
+        if (x == (int) x) {
             System.out.println("Введенное число - целое");
         } else {
-            System.out.println("Дробная часть: " + (x - (int)x));
+            System.out.println("Дробная часть: " + (x - (int) x));
         }
     }
 
@@ -221,14 +303,22 @@ public class Main {
     // Метод для определения дня недели по числу
     public static String day(int x) {
         switch (x) {
-            case 1: return "понедельник";
-            case 2: return "вторник";
-            case 3: return "среда";
-            case 4: return "четверг";
-            case 5: return "пятница";
-            case 6: return "суббота";
-            case 7: return "воскресенье";
-            default: return "это не день недели";
+            case 1:
+                return "понедельник";
+            case 2:
+                return "вторник";
+            case 3:
+                return "среда";
+            case 4:
+                return "четверг";
+            case 5:
+                return "пятница";
+            case 6:
+                return "суббота";
+            case 7:
+                return "воскресенье";
+            default:
+                return "это не день недели";
         }
     }
 
@@ -281,5 +371,67 @@ public class Main {
             }
             System.out.println();
         }
+    }
+
+    // Метод поиска первого вхождения числа x в массиве
+    public static int findFirst(int[] arr, int x) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == x) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // Метод поиска максимального по модулю значения
+    public static int maxAbs(int[] arr) {
+        int max = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (Math.abs(arr[i]) > Math.abs(max)) {
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+
+    // Метод добавления массива ins в массив arr на позицию pos
+    public static int[] add(int[] arr, int[] ins, int pos) {
+        int[] result = new int[arr.length + ins.length];
+        // Копируем элементы до позиции pos
+        System.arraycopy(arr, 0, result, 0, pos);
+        // Копируем вставляемый массив ins
+        System.arraycopy(ins, 0, result, pos, ins.length);
+        // Копируем оставшиеся элементы после pos
+        System.arraycopy(arr, pos, result, pos + ins.length, arr.length - pos);
+        return result;
+    }
+
+    // Метод, который возвращает реверсированный массив
+    public static int[] reverseBack(int[] arr) {
+        int[] reversed = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            reversed[i] = arr[arr.length - 1 - i];
+        }
+        return reversed;
+    }
+
+    // Метод, который возвращает все индексы вхождений числа x
+    public static int[] findAll(int[] arr, int x) {
+        int count = 0;
+        // Считаем количество вхождений числа x
+        for (int value : arr) {
+            if (value == x) {
+                count++;
+            }
+        }
+        // Заполняем массив индексов
+        int[] result = new int[count];
+        int index = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == x) {
+                result[index++] = i;
+            }
+        }
+        return result;
     }
 }
