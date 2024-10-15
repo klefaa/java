@@ -4,10 +4,10 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        Main m = new Main();
         Scanner scanner = new Scanner(System.in);
 
         while (true) { // выбор задачи
-            System.out.println("\nВыберите задачу (1 - 20):");
             System.out.println("\nВыберите задачу (1 - 20):");
             System.out.println("1: Дробная часть");
             System.out.println("2: Букву в число");
@@ -47,7 +47,7 @@ public class Main {
                     System.out.print("Введите число для вычисления его дробной части: ");
                     if (scanner.hasNextDouble()) {
                         double x = scanner.nextDouble();
-                        fraction(x);
+                        m.fraction(x);
                     } else {
                         System.out.println("Необходимо ввести число");
                         scanner.next(); // Очистка неверного ввода
@@ -59,7 +59,7 @@ public class Main {
                     String input = scanner.next();
                     if (input.length() == 1 && Character.isDigit(input.charAt(0))) {
                         char ch = input.charAt(0);
-                        System.out.println("Код символа: " + charToAscii(ch)); // Получаем ASCII-код
+                        System.out.println("Код символа: " + m.charToAscii(ch)); // Получаем ASCII-код
                     } else {
                         System.out.println("Необходимо ввести символ от 0 до 9 включительно");
                     }
@@ -69,7 +69,7 @@ public class Main {
                     System.out.print("Введите число для проверки: ");
                     if (scanner.hasNextInt()) {
                         int num = scanner.nextInt();
-                        System.out.println("Число двузначное: " + is2Digits(num));
+                        System.out.println("Число двузначное: " + m.is2Digits(num));
                     } else {
                         System.out.println("Некорректный ввод: введите целое число.");
                         scanner.next(); // Очистка неверного ввода
@@ -83,7 +83,7 @@ public class Main {
                     int b = scanner.nextInt();
                     System.out.print("Введите точку для проверки нахождения в диапазоне: ");
                     int checkNum = scanner.nextInt();
-                    System.out.println("Точка находится в диапазоне: " + isInRange(a, b, checkNum));
+                    System.out.println("Точка находится в диапазоне: " + m.isInRange(a, b, checkNum));
                     break;
                 case 5:
                     // равенство
@@ -91,19 +91,19 @@ public class Main {
                     int a1 = scanner.nextInt();
                     int b1 = scanner.nextInt();
                     int c1 = scanner.nextInt();
-                    System.out.println("Все равны: " + isEqual(a1, b1, c1));
+                    System.out.println("Все равны: " + m.isEqual(a1, b1, c1));
                     break;
                 case 6:
                     // модуль числа
                     System.out.print("Введите число для нахождения его модуля: ");
                     int x1 = scanner.nextInt();
-                    System.out.println("Модуль: " + abs(x1));
+                    System.out.println("Модуль: " + m.abs(x1));
                     break;
                 case 7:
                     // тридцать пять
                     System.out.print("Введите число (проверка на делимость 3 или 5): ");
                     int y = scanner.nextInt();
-                    System.out.println("Делится на 3 или 5, но не на оба: " + is35(y));
+                    System.out.println("Делится на 3 или 5, но не на оба: " + m.is35(y));
                     break;
                 case 8:
                     // тройной максимум
@@ -111,50 +111,50 @@ public class Main {
                     int x2 = scanner.nextInt();
                     int y2 = scanner.nextInt();
                     int z2 = scanner.nextInt();
-                    System.out.println("Максимум из введенных чисел: " + max3(x2, y2, z2));
+                    System.out.println("Максимум из введенных чисел: " + m.max3(x2, y2, z2));
                     break;
                 case 9:
                     // двойная сумма
                     System.out.print("Введите два числа: ");
                     int d = scanner.nextInt();
                     int e = scanner.nextInt();
-                    System.out.println("Сумма чисел: " + sum2(d, e));
+                    System.out.println("Сумма чисел: " + m.sum2(d, e));
                     break;
                 case 10:
                     // день недели
                     System.out.print("Введите число от 1 до 7 (день недели): ");
                     int dayNumber = scanner.nextInt();
-                    System.out.println("День недели: " + day(dayNumber));
+                    System.out.println("День недели: " + m.day(dayNumber));
                     break;
                 // числа подряд
                 case 11:
                     System.out.print("Введите число: ");
                     int x = scanner.nextInt();
-                    System.out.println("Числа подряд: " + listNums(x));
+                    System.out.println("Числа подряд: " + m.listNums(x));
                     break;
                 // четные числа
                 case 12:
                     System.out.print("Введите число : ");
                     int y1 = scanner.nextInt();
-                    System.out.println("Четные числа в строке: " + chet(y1));
+                    System.out.println("Четные числа в строке: " + m.chet(y1));
                     break;
                 case 13:
                     // длина числа
                     System.out.print("Введите число: ");
                     long num = scanner.nextLong();
-                    System.out.println("Длина числа: " + numLen(num));
+                    System.out.println("Длина числа: " + m.numLen(num));
                     break;
                 case 14:
                     // квадрат
                     System.out.print("Введите число (размеры квадрата): ");
                     int squareSize = scanner.nextInt();
-                    square(squareSize);
+                    m.square(squareSize);
                     break;
                 case 15:
                     // правый треугольник
                     System.out.print("Введите число (высоту треугольника): ");
                     int triangleHeight = scanner.nextInt();
-                    rightTriangle(triangleHeight);
+                    m.rightTriangle(triangleHeight);
                     break;
                 case 16: {
                     System.out.println("Введите длину массива:"); // для заполнения массива
@@ -167,7 +167,7 @@ public class Main {
                     // поиск первого значения
                     System.out.print("Введите число для поиска первого вхождения: ");
                     int x3 = scanner.nextInt();
-                    System.out.println("Индекс первого вхождения: " + findFirst(arr, x3));
+                    System.out.println("Индекс первого вхождения: " + m.findFirst(arr, x3));
                     break;
                 }
                 case 17: {
@@ -179,7 +179,7 @@ public class Main {
                         arr[i] = scanner.nextInt();
                     }
                     // поиск максимального
-                    System.out.println("Максимальное по модулю значение: " + maxAbs(arr));
+                    System.out.println("Максимальное по модулю значение: " + m.maxAbs(arr));
                     break;
                 }
                 case 18: {
@@ -192,15 +192,15 @@ public class Main {
                     }
                     // добавление массива в массив
                     System.out.println("Введите длину вставляемого массива:");
-                    int m = scanner.nextInt();
-                    int[] ins = new int[m];
+                    int l = scanner.nextInt();
+                    int[] ins = new int[l];
                     System.out.println("Введите элементы вставляемого массива:");
-                    for (int i = 0; i < m; i++) {
+                    for (int i = 0; i < l; i++) {
                         ins[i] = scanner.nextInt();
                     }
                     System.out.print("Введите позицию для вставки: ");
                     int pos = scanner.nextInt();
-                    System.out.println("Новый массив: " + Arrays.toString(add(arr, ins, pos)));
+                    System.out.println("Новый массив: " + Arrays.toString(m.add(arr, ins, pos)));
                     break;
                 }
                 case 19: {
@@ -213,7 +213,7 @@ public class Main {
                     }
                     // возвратный реверс
 
-                    System.out.println("Новый массив: " + Arrays.toString(reverseBack(arr)));
+                    System.out.println("Новый массив: " + Arrays.toString(m.reverseBack(arr)));
 
                     break;
                 }
@@ -228,7 +228,7 @@ public class Main {
                     // все вхождения
                     System.out.print("Введите число для поиска всех вхождений: ");
                     int y3 = scanner.nextInt();
-                    System.out.println("Все вхождения числа: " + Arrays.toString(findAll(arr, y3)));
+                    System.out.println("Все вхождения числа: " + Arrays.toString(m.findAll(arr, y3)));
                 }
                 default:
                     System.out.println("Ошибка: введите верный номер задачи");
@@ -239,7 +239,7 @@ public class Main {
     }
 
     // метод для возврата дробной части
-    public static void fraction(double x) {
+    public void fraction(double x) {
         if (x == (int) x) {
             System.out.println("Введенное число - целое");
         } else {
@@ -248,34 +248,34 @@ public class Main {
     }
 
     // метод для преобразования символа в ASCII-код
-    public static int charToAscii(char x) {
+    public int charToAscii(char x) {
         return (int) x;
     }
 
     // метод для проверки на двузначность
-    public static boolean is2Digits(int x) {
+    public boolean is2Digits(int x) {
         return (x >= 10 && x <= 99) || (x <= -10 && x >= -99);
     }
 
     // метод для проверки вхождения числа в отрезок
-    public static boolean isInRange(int a, int b, int num) {
+    public boolean isInRange(int a, int b, int num) {
         int min = Math.min(a, b);
         int max = Math.max(a, b);
         return num >= min && num <= max;
     }
 
     // метод для проверки равенства трех чисел
-    public static boolean isEqual(int a, int b, int c) {
+    public boolean isEqual(int a, int b, int c) {
         return a == b && b == c;
     }
 
     // метод для получения модуля числа
-    public static int abs(int x) {
+    public int abs(int x) {
         return x < 0 ? -x : x;
     }
 
     // метод для проверки делимости на 3 или 5, но не 3 и 5
-    public static boolean is35(int x) {
+    public boolean is35(int x) {
         if (x % 3 == 0 && x % 5 == 0) {
             return false; // делится на оба
         }
@@ -283,7 +283,7 @@ public class Main {
     }
 
     // метод для нахождения максимума из трех чисел
-    public static int max3(int x, int y, int z) {
+    public int max3(int x, int y, int z) {
         int max = x; // Предполагаем, что первое число максимальное
         if (y > max) max = y; // Проверяем второе число
         if (z > max) max = z; // Проверяем третье число
@@ -291,7 +291,7 @@ public class Main {
     }
 
     // Метод для вычисления суммы двух чисел с проверкой диапазона
-    public static int sum2(int x, int y) {
+    public int sum2(int x, int y) {
         int sum = x + y;
         if (sum >= 10 && sum <= 19) {
             return 20;
@@ -300,7 +300,7 @@ public class Main {
     }
 
     // Метод для определения дня недели по числу
-    public static String day(int x) {
+    public String day(int x) {
         switch (x) {
             case 1: return "понедельник";
             case 2: return "вторник";
@@ -315,7 +315,7 @@ public class Main {
     }
 
     // метод для вывода строки с числами от 0 до x
-    public static String listNums(int x) {
+    public String listNums(int x) {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i <= x; i++) {
             result.append(i).append(" ");
@@ -324,7 +324,7 @@ public class Main {
     }
 
     // метод для вывода строки с четными числами от 0 до x
-    public static String chet(int x) {
+    public String chet(int x) {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i <= x; i += 2) {
             result.append(i).append(" ");
@@ -333,7 +333,7 @@ public class Main {
     }
 
     // метод для нахождения длины числа
-    public static int numLen(long x) {
+    public int numLen(long x) {
         int length = 0;
         do {
             x /= 10;
@@ -344,6 +344,9 @@ public class Main {
 
     // метод для вывода квадрата размером x на x
     public static void square(int x) {
+        if (x <= 0) {
+            throw new IllegalArgumentException("x должно быть положительным");
+        }
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < x; j++) {
                 System.out.print("*");
@@ -353,7 +356,10 @@ public class Main {
     }
 
     // метод для вывода правого треугольника высотой x
-    public static void rightTriangle(int x) {
+    public void rightTriangle(int x) {
+        if (x <= 0) {
+            throw new IllegalArgumentException("x должно быть положительным");
+        }
         for (int i = 1; i <= x; i++) {
             for (int j = 0; j < x - i; j++) {
                 System.out.print(" ");
@@ -366,7 +372,7 @@ public class Main {
     }
 
     // метод поиска первого вхождения числа x в массиве
-    public static int findFirst(int[] arr, int x) {
+    public int findFirst(int[] arr, int x) {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == x) {
                 return i;
@@ -376,7 +382,7 @@ public class Main {
     }
 
     // метод поиска максимального по модулю значения
-    public static int maxAbs(int[] arr) {
+    public int maxAbs(int[] arr) {
         int max = arr[0];
         for (int i = 1; i < arr.length; i++) {
             if (Math.abs(arr[i]) > Math.abs(max)) {
@@ -387,7 +393,13 @@ public class Main {
     }
 
     // метод добавления массива ins в массив arr на позицию pos
-    public static int[] add(int[] arr, int[] ins, int pos) {
+    public int[] add(int[] arr, int[] ins, int pos) {
+        if (arr == null || ins == null) {
+            throw new IllegalArgumentException("Массивы не должны быть null");
+        }
+        if (pos < 0 || pos > arr.length) {
+            throw new IndexOutOfBoundsException("Некорректная позиция вставки");
+        }
         int[] result = new int[arr.length + ins.length];
         System.arraycopy(arr, 0, result, 0, pos);
         System.arraycopy(ins, 0, result, pos, ins.length);
@@ -396,7 +408,7 @@ public class Main {
     }
 
     // метод, который возвращает массив задом наперед
-    public static int[] reverseBack(int[] arr) {
+    public int[] reverseBack(int[] arr) {
         int[] reversed = new int[arr.length];
         for (int i = 0; i < arr.length; i++) {
             reversed[i] = arr[arr.length - 1 - i];
@@ -405,7 +417,7 @@ public class Main {
     }
 
     // метод, возвращающий все индексы вхождений числа x
-    public static int[] findAll(int[] arr, int x) {
+    public int[] findAll(int[] arr, int x) {
         int count = 0;
         for (int val : arr) {
             if (val == x) {
