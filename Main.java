@@ -157,15 +157,14 @@ public class Main {
                     rightTriangle(triangleHeight);
                     break;
                 case 16: {
-                    System.out.println("Введите длину массива:");
+                    System.out.println("Введите длину массива:"); // для заполнения массива
                     int n = scanner.nextInt();
                     int[] arr = new int[n];
                     System.out.println("Введите элементы массива:");
                     for (int i = 0; i < n; i++) {
                         arr[i] = scanner.nextInt();
                     }
-                    // Задача 1: Поиск первого значения
-
+                    // поиск первого значения
                     System.out.print("Введите число для поиска первого вхождения: ");
                     int x3 = scanner.nextInt();
                     System.out.println("Индекс первого вхождения: " + findFirst(arr, x3));
@@ -179,7 +178,7 @@ public class Main {
                     for (int i = 0; i < n; i++) {
                         arr[i] = scanner.nextInt();
                     }
-                    // Задача 2: Поиск максимального по модулю
+                    // поиск максимального
                     System.out.println("Максимальное по модулю значение: " + maxAbs(arr));
                     break;
                 }
@@ -191,7 +190,7 @@ public class Main {
                     for (int i = 0; i < n; i++) {
                         arr[i] = scanner.nextInt();
                     }
-                    // Задача 3: Добавление массива в массив
+                    // добавление массива в массив
                     System.out.println("Введите длину вставляемого массива:");
                     int m = scanner.nextInt();
                     int[] ins = new int[m];
@@ -212,9 +211,9 @@ public class Main {
                     for (int i = 0; i < n; i++) {
                         arr[i] = scanner.nextInt();
                     }
-                    // Задача 4: Возвратный реверс
+                    // возвратный реверс
 
-                    System.out.println("Реверсированный массив: " + Arrays.toString(reverseBack(arr)));
+                    System.out.println("Новый массив: " + Arrays.toString(reverseBack(arr)));
 
                     break;
                 }
@@ -226,7 +225,7 @@ public class Main {
                     for (int i = 0; i < n; i++) {
                         arr[i] = scanner.nextInt();
                     }
-                    // Задача 5: Все вхождения
+                    // все вхождения
                     System.out.print("Введите число для поиска всех вхождений: ");
                     int y3 = scanner.nextInt();
                     System.out.println("Все вхождения числа: " + Arrays.toString(findAll(arr, y3)));
@@ -303,20 +302,13 @@ public class Main {
     // Метод для определения дня недели по числу
     public static String day(int x) {
         switch (x) {
-            case 1:
-                return "понедельник";
-            case 2:
-                return "вторник";
-            case 3:
-                return "среда";
-            case 4:
-                return "четверг";
-            case 5:
-                return "пятница";
-            case 6:
-                return "суббота";
-            case 7:
-                return "воскресенье";
+            case 1: return "понедельник";
+            case 2: return "вторник";
+            case 3: return "среда";
+            case 4: return "четверг";
+            case 5: return "пятница";
+            case 6: return "суббота";
+            case 7: return "воскресенье";
             default:
                 return "это не день недели";
         }
@@ -373,7 +365,7 @@ public class Main {
         }
     }
 
-    // Метод поиска первого вхождения числа x в массиве
+    // метод поиска первого вхождения числа x в массиве
     public static int findFirst(int[] arr, int x) {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == x) {
@@ -383,7 +375,7 @@ public class Main {
         return -1;
     }
 
-    // Метод поиска максимального по модулю значения
+    // метод поиска максимального по модулю значения
     public static int maxAbs(int[] arr) {
         int max = arr[0];
         for (int i = 1; i < arr.length; i++) {
@@ -394,19 +386,16 @@ public class Main {
         return max;
     }
 
-    // Метод добавления массива ins в массив arr на позицию pos
+    // метод добавления массива ins в массив arr на позицию pos
     public static int[] add(int[] arr, int[] ins, int pos) {
         int[] result = new int[arr.length + ins.length];
-        // Копируем элементы до позиции pos
         System.arraycopy(arr, 0, result, 0, pos);
-        // Копируем вставляемый массив ins
         System.arraycopy(ins, 0, result, pos, ins.length);
-        // Копируем оставшиеся элементы после pos
         System.arraycopy(arr, pos, result, pos + ins.length, arr.length - pos);
         return result;
     }
 
-    // Метод, который возвращает реверсированный массив
+    // метод, который возвращает массив задом наперед
     public static int[] reverseBack(int[] arr) {
         int[] reversed = new int[arr.length];
         for (int i = 0; i < arr.length; i++) {
@@ -415,16 +404,14 @@ public class Main {
         return reversed;
     }
 
-    // Метод, который возвращает все индексы вхождений числа x
+    // метод, возвращающий все индексы вхождений числа x
     public static int[] findAll(int[] arr, int x) {
         int count = 0;
-        // Считаем количество вхождений числа x
-        for (int value : arr) {
-            if (value == x) {
+        for (int val : arr) {
+            if (val == x) {
                 count++;
             }
         }
-        // Заполняем массив индексов
         int[] result = new int[count];
         int index = 0;
         for (int i = 0; i < arr.length; i++) {
